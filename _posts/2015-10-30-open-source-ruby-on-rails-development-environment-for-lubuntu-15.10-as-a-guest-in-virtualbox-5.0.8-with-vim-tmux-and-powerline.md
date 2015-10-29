@@ -17,7 +17,9 @@ title: Open source Ruby on Rails development environment for Lubuntu 15.10 as a 
 * From the VirtualBox menu, select Devices > Insert Guest Additions CD image...
 * Launch LXTerminal (Ctrl-Alt-t).
 
-`sudo /media/drzel/VBOXADDITIONS_5.0.8_103449/./VBoxLinuxAdditions.run`
+{% highlight console %}
+sudo /media/drzel/VBOXADDITIONS_5.0.8_103449/./VBoxLinuxAdditions.run
+{% endhighlight %}
 
 Note: Your VBOXADDITIONS may be a later version.
 
@@ -26,12 +28,14 @@ Note: Your VBOXADDITIONS may be a later version.
 
 ## Install packages
 * Launch LXTerminal.
-```bash
-sudo apt-get install build-essential curl git cmake postgresql postgresql-contrib libpq-dev python-dev python-pip python3-dev python3-pip exuberant-ctags imagemagick vim tmux gnome-terminal
-```
+{% highlight console %}
+sudo apt-get install build-essential curl git cmake postgresql postgresql-contrib libpq-dev python-dev python-pip python3-dev python3-pip vim tmux gnome-terminal
+{% endhighlight %}
 
 ## Make gnome-terminal default terminal emulator
-`sudo update-alternatives --config x-terminal-emulator`
+{% highlight console %}
+sudo update-alternatives --config x-terminal-emulator
+{% endhighlight %}
 
 * Select `gnome-terminal.wrapper`.
 * Reboot machine.
@@ -44,10 +48,10 @@ sudo apt-get install build-essential curl git cmake postgresql postgresql-contri
 
 Note: If you are not using gnome-terminal check https://rvm.io/integration for the correct settings for your terminal emulator.
 
-```bash
+{% highlight console %}
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 \curl -sSL https://get.rvm.io | bash -s stable --rails
-```
+{% endhighlight %}
 
 This will take a while. Once finished:
 
@@ -55,64 +59,72 @@ This will take a while. Once finished:
 
 To confirm RVM installed correctly:
 
-`type rvm | head -n 1`
+{% highlight console %}
+type rvm | head -n 1
+{% endhighlight %}
 
 If everything went smoothly you should see `rvm is a function`.
 
 ## Configure PostgreSQL
 Create a PostgreSQL user with the same username and password as your Lubuntu login.
 
-`sudo -u postgres createuser -s USERNAME`
+{% highlight console %}
+sudo -u postgres createuser -s USERNAME
+{% endhighlight %}
 
 * Set your account password.
 
-`sudo -u postgres psql`
-
-`postgres=# \password USERNAME`
+{% highlight console %}
+sudo -u postgres psql
+postgres=# \password USERNAME
+{% endhighlight %}
 
 * Enter and confirm password.
 
-`postgres=# \q`
+{% highlight console %}
+postgres=# \q
+{% endhighlight %}
+
 
 ## Install Node.js
-```bash
+{% highlight console %}
 curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
 sudo apt-get install --yes nodejs
-```
+{% endhighlight %}
 
 ## Configure Git
-```bash
+{% highlight console %}
 git config --global user.email "YOUR.EMAIL@ADDRESS.COM"
 git config --global user.name "YOUR NAME"
-```
+{% endhighlight %}
 
 ## Install powerline
-```bash
+{% highlight console %}
 sudo pip install powerline-status
-```
+{% endhighlight %}
 
 ### Install powerline fonts
-```bash
+{% highlight console %}
 wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
 mv PowerlineSymbols.otf /usr/share/fonts/
 fc-cache -vf /usr/share/fonts/
 mv 10-powerline-symbols.conf /etc/fonts/conf.d/
-```
+{% endhighlight %}
 
 ### Configure powerline for bash
 * Append to `~/.bashrc`
 
-```bash
+{% highlight bash %}
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 . /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
-```
+{% endhighlight %}
 
 ### Configure powerline for vim
 * Append to `~/.vimrc` (create if necessary)
 
-```vim
+{% highlight vim %}
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
@@ -120,26 +132,28 @@ set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim
 set laststatus=2 " Always show status bar
 set timeoutlen=1000 ttimeoutlen=0 " Don't wait for escape key
 set noshowmode " Hide -- INSERT -- text in vim status bar
-```
+{% endhighlight %}
 
 ### Configure powerline for tmux
 * Append to `~/.tmux.conf` (create if necessary)
 
-```
+{% highlight bash %}
 # Use powerline
 source /usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf
 
 # Don't wait on escape
 set -sg escape-time 0
-```
+{% endhighlight %}
 
 ## Confirm working
-```bash
+{% highlight console %}
 rails new temp-rails-project
 cd temp-rails-project
 rails s
-```
+{% endhighlight %}
 
 Then point your browser to `localhost:3000`. If you see the Rails 'Welcome aboard' site you're good to go. When you're done you can remove the temp-rails-project folder.
 
-`rm -rf temp-rails-project`
+{% highlight console %}
+rm -rf temp-rails-project
+{% endhighlight %}
