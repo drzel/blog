@@ -1,11 +1,7 @@
 ---
 layout: post
-title: Open source Ruby on Rails development environment for Lubuntu 15.10 as a guest in [VirtualBox]) 5.0.8 with Vim, tmux and powerline.
+title: Open source Ruby on Rails development environment for Lubuntu 15.10 as a guest in VirtualBox 5.0.8 with Vim, tmux and powerline.
 ---
-# Open source Ruby on Rails development environment for [Lubuntu](http://lubuntu.net) 15.10 as a guest in [VirtualBox](http://www.virtualbox.org/) 5.0.8 with [Vim](http://www.vim.org/), [tmux](https://tmux.github.io/) and [powerline](https://github.com/powerline/powerline).
-
-## Install VirtualBox
-* Download and install the latest VirtualBox for your OS at https://www.virtualbox.org/.
 
 ## Install Lubuntu 15.10.
 * Download Lubuntu 15.10 image file from https://www.lubuntu.net/.
@@ -47,6 +43,7 @@ sudo apt-get install build-essential curl git cmake postgresql postgresql-contri
 * Click Close.
 
 Note: If you are not using gnome-terminal check https://rvm.io/integration for the correct settings for your terminal emulator.
+
 ```bash
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 \curl -sSL https://get.rvm.io | bash -s stable --rails
@@ -104,6 +101,7 @@ mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 
 ### Configure powerline for bash
 * Append to `~/.bashrc`
+
 ```bash
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
@@ -113,6 +111,7 @@ POWERLINE_BASH_SELECT=1
 
 ### Configure powerline for vim
 * Append to `~/.vimrc` (create if necessary)
+
 ```vim
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
@@ -125,6 +124,7 @@ set noshowmode " Hide -- INSERT -- text in vim status bar
 
 ### Configure powerline for tmux
 * Append to `~/.tmux.conf` (create if necessary)
+
 ```
 # Use powerline
 source /usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf
