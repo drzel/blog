@@ -19,10 +19,10 @@ title: Open source Ruby on Rails development environment for Lubuntu 15.10 as a 
 * Launch LXTerminal (Ctrl-Alt-t).
 
 {% highlight console %}
-$ sudo /media/drzel/VBOXADDITIONS_5.0.8_103449/./VBoxLinuxAdditions.run
+$ sudo /media/USERNAME/VBOXADDITIONS_5.0.8_103449/./VBoxLinuxAdditions.run
 {% endhighlight %}
 
-Note: Your VBOXADDITIONS may be a later version.
+Note: USERNAME is your Lubuntu account username. Your VBOXADDITIONS may be a later version.
 
 * Reboot machine.
 * From the VirtualBox menu, select Devices > Shared Clipboard > Bidirectional.
