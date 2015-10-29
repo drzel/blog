@@ -1,14 +1,191 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Your awesome title</title>
-    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+    <title>drzel&#39;s Umbrella</title>
+    <description>This is the personal blog of Sheldon J. Johnson. I&#39;ll post things as I learn them, to keep track of things as I learn them.
 </description>
-    <link>http://yourdomain.com/</link>
-    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 29 Oct 2015 19:05:07 +1100</pubDate>
-    <lastBuildDate>Thu, 29 Oct 2015 19:05:07 +1100</lastBuildDate>
+    <link>http://drzel.github.com/blog/</link>
+    <atom:link href="http://drzel.github.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 29 Oct 2015 19:33:07 +1100</pubDate>
+    <lastBuildDate>Thu, 29 Oct 2015 19:33:07 +1100</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Open source Ruby on Rails development environment for Lubuntu 15.10 as a guest in [VirtualBox]) 5.0.8 with Vim, tmux and powerline.</title>
+        <description>&lt;h1 id=&quot;open-source-ruby-on-rails-development-environment-for-lubuntuhttplubuntunet-1510-as-a-guest-in-virtualboxhttpwwwvirtualboxorg-508-with-vimhttpwwwvimorg-tmuxhttpstmuxgithubio-and-powerlinehttpsgithubcompowerlinepowerline&quot;&gt;Open source Ruby on Rails development environment for &lt;a href=&quot;http://lubuntu.net&quot;&gt;Lubuntu&lt;/a&gt; 15.10 as a guest in &lt;a href=&quot;http://www.virtualbox.org/&quot;&gt;VirtualBox&lt;/a&gt; 5.0.8 with &lt;a href=&quot;http://www.vim.org/&quot;&gt;Vim&lt;/a&gt;, &lt;a href=&quot;https://tmux.github.io/&quot;&gt;tmux&lt;/a&gt; and &lt;a href=&quot;https://github.com/powerline/powerline&quot;&gt;powerline&lt;/a&gt;.&lt;/h1&gt;
+
+&lt;h2 id=&quot;install-virtualbox&quot;&gt;Install VirtualBox&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Download and install the latest VirtualBox for your OS at https://www.virtualbox.org/.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;install-lubuntu-1510&quot;&gt;Install Lubuntu 15.10.&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Download Lubuntu 15.10 image file from https://www.lubuntu.net/.&lt;/li&gt;
+  &lt;li&gt;Launch VirtualBox.&lt;/li&gt;
+  &lt;li&gt;Click New.&lt;/li&gt;
+  &lt;li&gt;Follow the prompts. I recommend at least 1GB RAM and 16GB HD.&lt;/li&gt;
+  &lt;li&gt;When prompted select the Lubuntu .iso file you downloaded previously.&lt;/li&gt;
+  &lt;li&gt;Follow the Lubuntu installation process.&lt;/li&gt;
+  &lt;li&gt;If it freezes on first boot, in the VirtualBox menu, select Machine &amp;gt; Reset.&lt;/li&gt;
+  &lt;li&gt;When prompted by Software Updater, install updates.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;install-virtualbox-guest-additions&quot;&gt;Install VirtualBox Guest Additions&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;From the VirtualBox menu, select Devices &amp;gt; Insert Guest Additions CD image…&lt;/li&gt;
+  &lt;li&gt;Launch LXTerminal (Ctrl-Alt-t).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;sudo /media/drzel/VBOXADDITIONS_5.0.8_103449/./VBoxLinuxAdditions.run&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Note: Your VBOXADDITIONS may be a later version.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Reboot machine.&lt;/li&gt;
+  &lt;li&gt;From the VirtualBox menu, select Devices &amp;gt; Shared Clipboard &amp;gt; Bidirectional.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;install-packages&quot;&gt;Install packages&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Launch LXTerminal.
+&lt;code&gt;bash
+sudo apt-get install build-essential curl git cmake postgresql postgresql-contrib libpq-dev python-dev python-pip python3-dev python3-pip exuberant-ctags imagemagick vim tmux gnome-terminal
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;make-gnome-terminal-default-terminal-emulator&quot;&gt;Make gnome-terminal default terminal emulator&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;sudo update-alternatives --config x-terminal-emulator&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Select &lt;code&gt;gnome-terminal.wrapper&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Reboot machine.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;install-rvm-and-rails&quot;&gt;Install RVM and Rails&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Launch gnome-terminal (Ctrl-Alt-t).&lt;/li&gt;
+  &lt;li&gt;Click Edit &amp;gt; Profile Preferences &amp;gt; Command.&lt;/li&gt;
+  &lt;li&gt;Check ‘Run Command as a login shell’. &lt;/li&gt;
+  &lt;li&gt;Click Close.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Note: If you are not using gnome-terminal check https://rvm.io/integration for the correct settings for your terminal emulator.
+&lt;code&gt;bash
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+\curl -sSL https://get.rvm.io | bash -s stable --rails
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This will take a while. Once finished:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Close and then reopen gnome-terminal.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To confirm RVM installed correctly:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;type rvm | head -n 1&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If everything went smoothly you should see &lt;code&gt;rvm is a function&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;configure-postgresql&quot;&gt;Configure PostgreSQL&lt;/h2&gt;
+&lt;p&gt;Create a PostgreSQL user with the same username and password as your Lubuntu login.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sudo -u postgres createuser -s USERNAME&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Set your account password.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;sudo -u postgres psql&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;postgres=# \password USERNAME&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Enter and confirm password.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;postgres=# \q&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;install-nodejs&quot;&gt;Install Node.js&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;bash
+curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
+sudo apt-get install --yes nodejs
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;configure-git&quot;&gt;Configure Git&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;bash
+git config --global user.email &quot;YOUR.EMAIL@ADDRESS.COM&quot;
+git config --global user.name &quot;YOUR NAME&quot;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;install-powerline&quot;&gt;Install powerline&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;bash
+sudo pip install powerline-status
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;install-powerline-fonts&quot;&gt;Install powerline fonts&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;bash
+wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+mv PowerlineSymbols.otf /usr/share/fonts/
+fc-cache -vf /usr/share/fonts/
+mv 10-powerline-symbols.conf /etc/fonts/conf.d/
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;configure-powerline-for-bash&quot;&gt;Configure powerline for bash&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Append to &lt;code&gt;~/.bashrc&lt;/code&gt;
+&lt;code&gt;bash
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;configure-powerline-for-vim&quot;&gt;Configure powerline for vim&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Append to &lt;code&gt;~/.vimrc&lt;/code&gt; (create if necessary)
+&lt;code&gt;vim
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim
+set laststatus=2 &quot; Always show status bar
+set timeoutlen=1000 ttimeoutlen=0 &quot; Don&#39;t wait for escape key
+set noshowmode &quot; Hide -- INSERT -- text in vim status bar
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;configure-powerline-for-tmux&quot;&gt;Configure powerline for tmux&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Append to &lt;code&gt;~/.tmux.conf&lt;/code&gt; (create if necessary)
+```
+# Use powerline
+source /usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;dont-wait-on-escape&quot;&gt;Don’t wait on escape&lt;/h1&gt;
+&lt;p&gt;set -sg escape-time 0
+```&lt;/p&gt;
+
+&lt;h2 id=&quot;confirm-working&quot;&gt;Confirm working&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;bash
+rails new temp-rails-project
+cd temp-rails-project
+rails s
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then point your browser to &lt;code&gt;localhost:3000&lt;/code&gt;. If you see the Rails ‘Welcome aboard’ site you’re good to go. When you’re done you can remove the temp-rails-project folder.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;rm -rf temp-rails-project&lt;/code&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 30 Oct 2015 00:00:00 +1100</pubDate>
+        <link>http://drzel.github.com/blog/2015/10/30/open-source-ruby-on-rails-development-environment-for-lubuntu-15.10-as-a-guest-in-virtualbox-5.0.8-with-vim-tmux-and-powerline.html</link>
+        <guid isPermaLink="true">http://drzel.github.com/blog/2015/10/30/open-source-ruby-on-rails-development-environment-for-lubuntu-15.10-as-a-guest-in-virtualbox-5.0.8-with-vim-tmux-and-powerline.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Welcome to Jekyll!</title>
@@ -28,8 +205,8 @@
 
 </description>
         <pubDate>Thu, 29 Oct 2015 19:04:18 +1100</pubDate>
-        <link>http://yourdomain.com/jekyll/update/2015/10/29/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/jekyll/update/2015/10/29/welcome-to-jekyll.html</guid>
+        <link>http://drzel.github.com/blog/jekyll/update/2015/10/29/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://drzel.github.com/blog/jekyll/update/2015/10/29/welcome-to-jekyll.html</guid>
         
         
         <category>jekyll</category>
