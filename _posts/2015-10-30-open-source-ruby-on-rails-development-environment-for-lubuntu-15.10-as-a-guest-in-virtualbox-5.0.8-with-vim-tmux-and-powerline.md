@@ -47,7 +47,7 @@ sudo update-alternatives --config x-terminal-emulator
 * Check 'Run Command as a login shell'. 
 * Click Close.
 
-Note: If you are not using gnome-terminal check https://rvm.io/integration for the correct settings for your terminal emulator.
+Note: If you are not using gnome-terminal check the [RVM integration docs](https://rvm.io/integration) for the correct settings for your terminal emulator.
 
 {% highlight console %}
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
@@ -116,6 +116,7 @@ mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 * Append to `~/.bashrc`
 
 {% highlight bash %}
+# Load powerline
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
@@ -126,20 +127,24 @@ POWERLINE_BASH_SELECT=1
 * Append to `~/.vimrc` (create if necessary)
 
 {% highlight vim %}
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+" Load powerline
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim
-set laststatus=2 " Always show status bar
-set timeoutlen=1000 ttimeoutlen=0 " Don't wait for escape key
-set noshowmode " Hide -- INSERT -- text in vim status bar
+
+" Always show status bar
+set laststatus=2
+
+" Don't wait for escape key
+set timeoutlen=1000 ttimeoutlen=0
+
+" Hide -- INSERT -- text in vim status bar
+set noshowmode
 {% endhighlight %}
 
 ### Configure powerline for tmux
 * Append to `~/.tmux.conf` (create if necessary)
 
 {% highlight bash %}
-# Use powerline
+# Load powerline
 source /usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf
 
 # Don't wait on escape
