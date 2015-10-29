@@ -19,7 +19,7 @@ title: Open source Ruby on Rails development environment for Lubuntu 15.10 as a 
 * Launch LXTerminal (Ctrl-Alt-t).
 
 {% highlight console %}
-sudo /media/drzel/VBOXADDITIONS_5.0.8_103449/./VBoxLinuxAdditions.run
+$ sudo /media/drzel/VBOXADDITIONS_5.0.8_103449/./VBoxLinuxAdditions.run
 {% endhighlight %}
 
 Note: Your VBOXADDITIONS may be a later version.
@@ -30,12 +30,12 @@ Note: Your VBOXADDITIONS may be a later version.
 ## Install packages
 * Launch LXTerminal.
 {% highlight console %}
-sudo apt-get install build-essential curl git cmake postgresql postgresql-contrib libpq-dev python-dev python-pip python3-dev python3-pip vim tmux gnome-terminal
+$ sudo apt-get install build-essential curl git cmake postgresql postgresql-contrib libpq-dev python-dev python-pip python3-dev python3-pip vim tmux gnome-terminal
 {% endhighlight %}
 
 ## Make gnome-terminal default terminal emulator
 {% highlight console %}
-sudo update-alternatives --config x-terminal-emulator
+$ sudo update-alternatives --config x-terminal-emulator
 {% endhighlight %}
 
 * Select `gnome-terminal.wrapper`.
@@ -50,8 +50,8 @@ sudo update-alternatives --config x-terminal-emulator
 Note: If you are not using gnome-terminal check the [RVM integration docs](https://rvm.io/integration) for the correct settings for your terminal emulator.
 
 {% highlight console %}
-gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-\curl -sSL https://get.rvm.io | bash -s stable --rails
+$ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+$ \curl -sSL https://get.rvm.io | bash -s stable --rails
 {% endhighlight %}
 
 This will take a while. Once finished:
@@ -61,7 +61,7 @@ This will take a while. Once finished:
 To confirm RVM installed correctly:
 
 {% highlight console %}
-type rvm | head -n 1
+$ type rvm | head -n 1
 {% endhighlight %}
 
 If everything went smoothly you should see `rvm is a function`.
@@ -70,46 +70,52 @@ If everything went smoothly you should see `rvm is a function`.
 Create a PostgreSQL user with the same username and password as your Lubuntu login.
 
 {% highlight console %}
-sudo -u postgres createuser -s USERNAME
+$ sudo -u postgres createuser -s USERNAME
+{% endhighlight %}
+
+* Log in.
+
+{% highlight console %}
+$ sudo -u postgres psql
 {% endhighlight %}
 
 * Set your account password.
 
-{% highlight console %}
-sudo -u postgres psql
+~~~
 postgres=# \password USERNAME
-{% endhighlight %}
+~~~
 
 * Enter and confirm password.
+* Log out.
 
-{% highlight console %}
+~~~
 postgres=# \q
-{% endhighlight %}
+~~~
 
 
 ## Install Node.js
 {% highlight console %}
-curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
-sudo apt-get install --yes nodejs
+$ curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
+$ sudo apt-get install --yes nodejs
 {% endhighlight %}
 
 ## Configure Git
 {% highlight console %}
-git config --global user.email "YOUR.EMAIL@ADDRESS.COM"
-git config --global user.name "YOUR NAME"
+$ git config --global user.email "YOUR.EMAIL@ADDRESS.COM"
+$ git config --global user.name "YOUR NAME"
 {% endhighlight %}
 
 ## Install powerline
 {% highlight console %}
-sudo pip install powerline-status
+$ sudo pip install powerline-status
 {% endhighlight %}
 
 ### Install powerline fonts
 {% highlight console %}
-wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
-mv PowerlineSymbols.otf /usr/share/fonts/
-fc-cache -vf /usr/share/fonts/
-mv 10-powerline-symbols.conf /etc/fonts/conf.d/
+$ wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+$ mv PowerlineSymbols.otf /usr/share/fonts/
+$ fc-cache -vf /usr/share/fonts/
+$ mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 {% endhighlight %}
 
 ### Configure powerline for bash
@@ -153,13 +159,13 @@ set -sg escape-time 0
 
 ## Confirm working
 {% highlight console %}
-rails new temp-rails-project
-cd temp-rails-project
-rails s
+$ rails new temp-rails-project
+$ cd temp-rails-project
+$ rails s
 {% endhighlight %}
 
 Then point your browser to `localhost:3000`. If you see the Rails 'Welcome aboard' site you're good to go. When you're done you can remove the temp-rails-project folder.
 
 {% highlight console %}
-rm -rf temp-rails-project
+$ rm -rf temp-rails-project
 {% endhighlight %}
