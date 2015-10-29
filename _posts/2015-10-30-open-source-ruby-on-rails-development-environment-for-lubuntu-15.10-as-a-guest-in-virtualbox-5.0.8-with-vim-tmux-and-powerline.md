@@ -4,8 +4,9 @@ title: Open source Ruby on Rails development environment for Lubuntu 15.10 as a 
 ---
 
 ## Install Lubuntu 15.10.
-* Download Lubuntu 15.10 image file from https://www.lubuntu.net/.
-* Launch VirtualBox.
+* Download the latest VirtualBox package from the [VirtualBox homepage](https://www.virtualbox.net/).
+* Download Lubuntu 15.10 image file from the [Lubuntu homepage](https://www.lubuntu.net/).
+* Install and launch VirtualBox.
 * Click New.
 * Follow the prompts. I recommend at least 1GB RAM and 16GB HD.
 * When prompted select the Lubuntu .iso file you downloaded previously.
