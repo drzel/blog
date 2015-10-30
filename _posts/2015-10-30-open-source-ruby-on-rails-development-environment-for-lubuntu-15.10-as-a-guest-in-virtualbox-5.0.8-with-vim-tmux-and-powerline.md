@@ -3,7 +3,11 @@ layout: post
 title: Open source Ruby on Rails development environment for Lubuntu 15.10 as a guest in VirtualBox 5.0.8 with Vim, tmux and powerline
 ---
 
-![Lubuntu]({{ site.url }}/assets/lubuntu.png)
+![VirtualBox]({{ site.url }}/blog/assets/vbox.png)
+![Lubuntu]({{ site.url }}/blog/assets/lubuntu.png)
+![vim]({{ site.url }}/blog/assets/vim.png)
+![tmux]({{ site.url }}/blog/assets/tmux.png)
+![powerline]({{ site.url }}/blog/assets/powerline.png)
 
 Don't develop Rails applications on Windows. I've tried, it sux. But if you're like me and for whatever reason you're stuck with your Windows machine? Oracle's VirtualBox and lightweight Ubuntu "flavour" Lubuntu are pretty handy. I've found it to be surprisingly stable and streamlined. What's more, by running as a VirtualBox guest, you're able to take 'snapshots' of the current machine state, which is *very* handy.
 
