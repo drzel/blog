@@ -49,7 +49,7 @@ Note: USERNAME is your Lubuntu account username. Your VBOXADDITIONS may be a lat
 ### Install packages
 * Launch LXTerminal.
 {% highlight console %}
-$ sudo apt-get install build-essential curl git cmake postgresql postgresql-contrib libpq-dev python-dev python-pip python3-dev python3-pip vim tmux gnome-terminal
+$ sudo apt-get install build-essential curl git cmake postgresql postgresql-contrib libpq-dev python-dev python-pip python3-dev python3-pip vim-gnome tmux gnome-terminal
 {% endhighlight %}
 
 ### Make gnome-terminal default terminal emulator
