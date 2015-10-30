@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Open source Ruby on Rails development environment for Lubuntu 15.10 as a guest in VirtualBox 5.0.8 with Vim, tmux and powerline
+title: Open source Ruby on Rails development environment for Windows, running Lubuntu 15.10 as a guest in VirtualBox with vim, tmux and powerline
 ---
 
 ![VirtualBox]({{ site.url }}/blog/assets/vbox.png)
