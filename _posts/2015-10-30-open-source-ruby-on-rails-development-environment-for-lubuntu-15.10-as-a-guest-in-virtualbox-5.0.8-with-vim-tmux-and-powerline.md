@@ -1,17 +1,27 @@
 ---
 layout: post
-title: Open source Ruby on Rails development environment for Lubuntu 15.10 as a guest in VirtualBox 5.0.8 with Vim, tmux and powerline.
+title: Open source Ruby on Rails development environment for Lubuntu 15.10 as a guest in VirtualBox 5.0.8 with Vim, tmux and powerline
 ---
 
+![Lubuntu]({{ site.url }}/assets/lubuntu.png)
+
+Don't develop Rails applications on Windows. I've tried, it sux. But if you're like me and for whatever reason you're stuck with your Windows machine? Oracle's VirtualBox and lightweight Ubuntu "flavour" Lubuntu are pretty handy. I've found it to be surprisingly stable and streamlined. What's more, by running as a VirtualBox guest, you're able to take 'snapshots' of the current machine state, which is *very* handy.
+
+For my text editor, I love vim + tmux. Have a look at Nick Nisi's [awesome presentation](https://youtu.be/5r6yzFEXajQ) explaining why they're so awesome.
+
+Finally for a touch of hacker niceness, I've included instructions on integrating [powerline](https://github.com/powerline/powerline) into bash, vim and tmux.
+
+## Install VirtualBox
+* Download and install the latest VirtualBox package from the [VirtualBox homepage](https://www.virtualbox.org/).
+
 ## Install Lubuntu 15.10.
-* Download the latest VirtualBox package from the [VirtualBox homepage](https://www.virtualbox.org/).
 * Download Lubuntu 15.10 image file from the [Lubuntu homepage](http://lubuntu.net/).
 * Install and launch VirtualBox.
 * Click New.
-* Follow the prompts. I recommend at least 1GB RAM and 16GB HD.
+* Follow the prompts to create your virtual machine. I recommend at least 1GB RAM and 16GB HD.
 * When prompted select the Lubuntu .iso file you downloaded previously.
 * Follow the Lubuntu installation process.
-* If it freezes on first boot, in the VirtualBox menu, select Machine > Reset.
+* If it freezes on first boot (known issue), in the VirtualBox menu, select Machine > Reset.
 * When prompted by Software Updater, install updates.
 
 ## Install VirtualBox Guest Additions
