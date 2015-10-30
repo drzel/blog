@@ -11,14 +11,16 @@ title: Open source Ruby on Rails development environment for Lubuntu 15.10 as a 
 
 Don't develop Rails applications on Windows. I've tried, it sux. But if you're like me and for whatever reason you're stuck with your Windows machine? Oracle's VirtualBox and lightweight Ubuntu "flavour" Lubuntu are pretty handy. I've found it to be surprisingly stable and streamlined. What's more, by running as a VirtualBox guest, you're able to take 'snapshots' of the current machine state, which is *very* handy.
 
-For my text editor, I love vim + tmux. Have a look at Nick Nisi's [awesome presentation](https://youtu.be/5r6yzFEXajQ) explaining why they're so awesome.
+For my text editor, I love vim + tmux. Have a look at Nick Nisi's [awesome presentation](https://youtu.be/5r6yzFEXajQ) explaining why they're so awesome. For a touch of hacker niceness, I've included instructions on integrating [powerline](https://github.com/powerline/powerline) into bash, vim and tmux.
 
-Finally for a touch of hacker niceness, I've included instructions on integrating [powerline](https://github.com/powerline/powerline) into bash, vim and tmux.
+I've gone with node.js and postgresql to make deploying to Heroku as painless as possible.
 
-## Install VirtualBox
+## Configure the Virtual Machine
+
+### Install VirtualBox
 * Download and install the latest VirtualBox package from the [VirtualBox homepage](https://www.virtualbox.org/).
 
-## Install Lubuntu 15.10.
+### Install Lubuntu 15.10.
 * Download Lubuntu 15.10 image file from the [Lubuntu homepage](http://lubuntu.net/).
 * Install and launch VirtualBox.
 * Click New.
@@ -28,7 +30,7 @@ Finally for a touch of hacker niceness, I've included instructions on integratin
 * If it freezes on first boot (known issue), in the VirtualBox menu, select Machine > Reset.
 * When prompted by Software Updater, install updates.
 
-## Install VirtualBox Guest Additions
+### Install VirtualBox Guest Additions
 * From the VirtualBox menu, select Devices > Insert Guest Additions CD image...
 * Launch LXTerminal (Ctrl-Alt-t).
 
@@ -41,13 +43,15 @@ Note: USERNAME is your Lubuntu account username. Your VBOXADDITIONS may be a lat
 * Reboot machine.
 * From the VirtualBox menu, select Devices > Shared Clipboard > Bidirectional.
 
-## Install packages
+## Configure the development environment
+
+### Install packages
 * Launch LXTerminal.
 {% highlight console %}
 $ sudo apt-get install build-essential curl git cmake postgresql postgresql-contrib libpq-dev python-dev python-pip python3-dev python3-pip vim tmux gnome-terminal
 {% endhighlight %}
 
-## Make gnome-terminal default terminal emulator
+### Make gnome-terminal default terminal emulator
 {% highlight console %}
 $ sudo update-alternatives --config x-terminal-emulator
 {% endhighlight %}
@@ -55,7 +59,7 @@ $ sudo update-alternatives --config x-terminal-emulator
 * Select `gnome-terminal.wrapper`.
 * Reboot machine.
 
-## Install RVM and Rails
+### Install RVM and Rails
 * Launch gnome-terminal (Ctrl-Alt-t).
 * Click Edit > Profile Preferences > Command.
 * Check 'Run Command as a login shell'. 
@@ -80,7 +84,7 @@ $ type rvm | head -n 1
 
 If everything went smoothly you should see `rvm is a function`.
 
-## Configure PostgreSQL
+### Configure PostgreSQL
 Create a PostgreSQL user with the same username and password as your Lubuntu login.
 
 {% highlight console %}
@@ -106,25 +110,24 @@ postgres=# \password USERNAME
 postgres=# \q
 ~~~
 
-
-## Install Node.js
+### Install Node.js
 {% highlight console %}
 $ curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
 $ sudo apt-get install --yes nodejs
 {% endhighlight %}
 
-## Configure Git
+### Configure Git
 {% highlight console %}
 $ git config --global user.email "YOUR.EMAIL@ADDRESS.COM"
 $ git config --global user.name "YOUR NAME"
 {% endhighlight %}
 
-## Install powerline
+### Install powerline
 {% highlight console %}
 $ sudo pip install powerline-status
 {% endhighlight %}
 
-### Install powerline fonts
+#### Install powerline fonts
 {% highlight console %}
 $ wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
 $ mv PowerlineSymbols.otf /usr/share/fonts/
@@ -132,7 +135,7 @@ $ fc-cache -vf /usr/share/fonts/
 $ mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 {% endhighlight %}
 
-### Configure powerline for bash
+#### Configure powerline for bash
 * Append to `~/.bashrc`
 
 {% highlight bash %}
@@ -143,7 +146,7 @@ POWERLINE_BASH_SELECT=1
 . /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
 {% endhighlight %}
 
-### Configure powerline for vim
+#### Configure powerline for vim
 * Append to `~/.vimrc` (create if necessary)
 
 {% highlight vim %}
@@ -160,7 +163,7 @@ set timeoutlen=1000 ttimeoutlen=0
 set noshowmode
 {% endhighlight %}
 
-### Configure powerline for tmux
+#### Configure powerline for tmux
 * Append to `~/.tmux.conf` (create if necessary)
 
 {% highlight bash %}
@@ -171,7 +174,7 @@ source /usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.
 set -sg escape-time 0
 {% endhighlight %}
 
-## Confirm working
+### Confirm working
 {% highlight console %}
 $ rails new temp-rails-project
 $ cd temp-rails-project
