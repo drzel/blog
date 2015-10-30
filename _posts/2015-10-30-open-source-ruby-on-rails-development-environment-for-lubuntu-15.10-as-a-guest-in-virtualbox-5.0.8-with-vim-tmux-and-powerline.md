@@ -9,7 +9,7 @@ title: Open source Ruby on Rails development environment for Windows, running Lu
 ![tmux]({{ site.url }}/blog/assets/tmux.png)
 ![powerline]({{ site.url }}/blog/assets/powerline.png)
 
-Don't develop Rails applications on Windows. I've tried, it sux. But if you're like me and for whatever reason you're stuck with your Windows machine? Oracle's VirtualBox and lightweight Ubuntu "flavour" Lubuntu are pretty handy. I've found it to be surprisingly stable and streamlined. What's more, by running as a VirtualBox guest, you're able to take 'snapshots' of the current machine state, which is *very* handy.
+Don't develop Rails applications on Windows. I've tried, it sux. But if you're like me and for whatever reason you're stuck with your Windows machine? Oracle's VirtualBox and lightweight Ubuntu flavour Lubuntu are pretty handy. I've found it to be surprisingly stable and streamlined. What's more, by running as a VirtualBox guest, you're able to take snapshots of the current machine state, which is *very* handy.
 
 For my text editor, I love vim + tmux. Have a look at Nick Nisi's [awesome presentation](https://youtu.be/5r6yzFEXajQ) explaining why they're so awesome. For a touch of hacker niceness, I've included instructions on integrating [powerline](https://github.com/powerline/powerline) into bash, vim and tmux.
 
