@@ -13,6 +13,11 @@ Don't develop Rails applications on Windows. I've tried, it sux. But if you're l
 
 For my text editor, I love vim + tmux. Have a look at Nick Nisi's [awesome presentation](https://youtu.be/5r6yzFEXajQ) explaining why they're so awesome. For a touch of hacker niceness, I've included instructions on integrating [powerline](https://github.com/powerline/powerline) into bash, vim and tmux. I've gone with node.js and postgresql to make deploying to Heroku as painless as possible.
 
+[
+![screenshot 1]({{ site.url }}/blog/assets/ss001.png)
+![screenshot 2]({{ site.url }}/blog/assets/ss002.png)
+](http://imgur.com/a/l4kpJ)
+
 ## Configure the Virtual Machine
 
 ### Install VirtualBox
